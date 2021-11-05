@@ -10,11 +10,11 @@ const url = 'https://www.theguardian.com/uk';
 axios(url)
   .then((response) => {
     const html = response.data;
-    const data = cheerio.load(html);
+    const $ = cheerio.load(html);
     const articles = [];
-    data('.fc-item__title', html).each(function () {
-      const title = data(this).text();
-      const link = data(this).find('a').attr('href');
+    $('.fc-item__title', html).each(function () {
+      const title = $(this).text();
+      const link = $(this).find('a').attr('href');
 
       articles.push({
         title,
